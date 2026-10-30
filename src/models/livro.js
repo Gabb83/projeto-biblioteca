@@ -19,5 +19,4 @@ export class Livro {
   getNome() { return this.#titulo; }
   getAutor() { return this.#autor; }
   getCategoria() { return this.#categoria; }
-
 }

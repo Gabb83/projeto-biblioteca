@@ -9,7 +9,7 @@ export class Usuario {
     }
 
     this.#id = id;
-    this.#id = nome;
+    this.#nome = nome;
     this.#matricula = matricula;
   }
 

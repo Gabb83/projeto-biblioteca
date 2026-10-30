@@ -1,6 +1,3 @@
-import { Livro } from "./livro";
-import { Usuario } from "./usuario";
-
 export class Emprestimo {
   #id;
   #livro;
@@ -9,26 +6,25 @@ export class Emprestimo {
   #dataPrevistaDevolucao;
   #dataEfetivaDevolucao;
   
-  constructor(id, livro, usuario, dataEmprestimo, dataPrevistaDevolucao) {
-    if(!id) {
-      throw new Error("O identificador do empréstimo é obrigatório.");
-    }
-
-    if(!(livro instanceof Livro)) {
-      throw new Error("O empréstimo deve estar associado a um livro.");
-    }
-    
+  constructor(id, livro, usuario, dataEmprestimo, dataPrevistaDevolucao, dataEfetivaDevolucao = null) {
     this.#id = id;
     this.#livro = livro;
     this.#usuario = usuario;
-    this.#dataEmprestimo = dataInicial;
-    this.#dataPrevistaDevolucao = dataPrevista;
-    this.#dataEfetivaDevolucao = null;
+    this.#dataEmprestimo = dataEmprestimo;
+    this.#dataPrevistaDevolucao = dataPrevistaDevolucao;
+    this.#dataEfetivaDevolucao = dataEfetivaDevolucao;
   }
 
   getId() { return this.#id; }
   getLivro() { return this.#livro; }
   getUsuario() { return this.#usuario; }
+  getDataEmprestimo() { return this.#dataEmprestimo; }
+  getDataPrevistaDevolucao() { return this.#dataPrevistaDevolucao; }
+  getDataEfetivaDevolucao() { return this.#dataEfetivaDevolucao; }
+
+  registrarDevolucao(data = new Date()) {
+    this.#dataEfetivaDevolucao = data;
+  }
 
   obterDados() {
     return {
